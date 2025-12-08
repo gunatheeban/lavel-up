@@ -1,0 +1,69 @@
+📘 Vehicle Rental System — Review Summary
+
+This project demonstrates a solid understanding of abstraction, polymorphism, and the Template Method pattern. The system models vehicles, add-ons, discounts, and rental pricing in an extensible and object-oriented way.
+
+⭐ Overall Rating: 8.2 / 10
+
+A well-structured and extensible design with strong use of abstraction and clean separation of responsibilities. Several improvements will bring it to a professional level.
+
+✅ Strengths
+
+Clear abstraction of Vehicle, AddOn, Discount, and RentalService
+
+Good polymorphic behavior across multiple vehicle types
+
+Extensible add-on and discount system
+
+Clean object modeling (BaseAmount, Discount breakdowns, RentalQuote)
+
+Readable and maintainable code structure
+
+Demonstrates Template Method-like processing in RentalService
+
+⚠️ Key Issues Identified
+1. Wrong discount calculation
+
+Discounts are added to the subtotal instead of being subtracted.
+
+2. Incomplete VehicleSpecific discount implementation
+
+Method is cut off and logic is incomplete.
+
+3. Incorrect or missing constructors in add-ons
+
+Classes like GPS, ChildSeat, and Insurance require proper constructors.
+
+4. Public fields in some vehicle classes
+
+Fields such as seats and isLuxury should be private with getters.
+
+5. TAX constant misspelled as TEX
+6. RentalQuote stores numerical values as strings
+
+Should use numeric types (double) and separate breakdown formatting.
+
+7. Breakdown formatting issues
+
+Add-on breakdowns run together without new lines.
+
+🔧 Recommended Improvements
+
+Correct discount logic (subtotal -= discountAmount)
+
+Complete the VehicleSpecific discount code
+
+Add proper constructors for add-ons and remove hidden/private ones
+
+Make all fields private and properly encapsulated
+
+Fix TEX → TAX
+
+Use numeric fields in RentalQuote and generate breakdown strings separately
+
+Ensure add-on breakdown has clean formatting ("\n" separators)
+
+Improve validation and masking logic where applicable
+
+🏆 Final Evaluation
+
+This is a strong project showcasing advanced OOP concepts. With the recommended corrections, it can be taken to a professional, production-ready level. The architecture is flexible enough to support additional vehicles, pricing rules, and rental behaviors with minimal code changes.
