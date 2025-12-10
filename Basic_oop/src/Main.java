@@ -1,50 +1,32 @@
-import AbstractionProblems.PaymentProcessingSystem.BankTransferPayment;
-import AbstractionProblems.PaymentProcessingSystem.CreditCardPayment;
-import AbstractionProblems.PaymentProcessingSystem.Payment;
-import AbstractionProblems.PaymentProcessingSystem.PaymentReceipt;
-import AbstractionProblems.PaymentProcessingSystem.PaypalPayment;
-import AbstractionProblems.ReportGenerationFramework.CsvReportGenerator;
-import AbstractionProblems.ReportGenerationFramework.DataSource;
-import AbstractionProblems.ReportGenerationFramework.ExcelReportGenerator;
-import AbstractionProblems.ReportGenerationFramework.PdfReportGenerator;
-import AbstractionProblems.ReportGenerationFramework.Report;
-import AbstractionProblems.ReportGenerationFramework.ReportGenerator;
-import AbstractionProblems.ShapeAreaCalculator.Circle;
-import AbstractionProblems.ShapeAreaCalculator.Rectangle;
-import AbstractionProblems.ShapeAreaCalculator.Triangle;
-import InheritanceProblems.VehicleHierarchy.ElectricCar;
-import AbstractionProblems.ShapeAreaCalculator.Shape;
 import java.util.Arrays;
+import oop.AbstractionProblems.ReportGenerationFramework.CsvReportGenerator;
+import oop.AbstractionProblems.ReportGenerationFramework.DataSource;
+import oop.AbstractionProblems.ReportGenerationFramework.ExcelReportGenerator;
+import oop.AbstractionProblems.ReportGenerationFramework.PdfReportGenerator;
+import oop.AbstractionProblems.ReportGenerationFramework.Report;
+import oop.AbstractionProblems.ReportGenerationFramework.ReportGenerator;
 import java.util.List;
 import java.util.Map;
+import oop.Common.FoodDeliverySystem.BikeDelivery;
+import oop.Common.FoodDeliverySystem.CarDelivery;
+import oop.Common.FoodDeliverySystem.Delivery;
+import oop.Common.FoodDeliverySystem.DeliveryDetails;
+import oop.Common.FoodDeliverySystem.DroneDelivery;
 
 public class Main {
 
   public static void main(String[] args) {
 
-    List<ReportGenerator> generators = List.of(
-        new PdfReportGenerator(),
-        new ExcelReportGenerator(),
-        new CsvReportGenerator()
-    );
+    List<Delivery> deliverys =List.of(
+        new BikeDelivery(25.25, 5, 5),
+        new CarDelivery(30, 10, 10),
+        new DroneDelivery(40, 20, 20),
+        new DroneDelivery(6, 20, 20));
 
-    DataSource dataSource = new DataSource(
-        "users",
-        Map.of(
-            "country", "US",
-            "status", "ACTIVE",
-            "minAge", 21,
-            "maxAge", 60
-        )
-    );
-
-
-    for ( ReportGenerator generator: generators) {
-      Report report = generator.generate(dataSource);
-      System.out.println("Generated: " + report.getType());
-      System.out.println("Generated at: " + report.getGeneratedAt());
-      System.out.println("Size: " + report.getContent().length + " bytes");
+    for (Delivery delivery: deliverys) {
+      System.out.println(delivery.costCalculation());
     }
+
   }
 }
 
@@ -77,4 +59,29 @@ public class Main {
 //    System.out.println();
 //  }
 //
+//}
+
+//  List<ReportGenerator> generators = List.of(
+//      new PdfReportGenerator(),
+//      new ExcelReportGenerator(),
+//      new CsvReportGenerator()
+//  );
+//
+//  DataSource dataSource = new DataSource(
+//      "users",
+//      Map.of(
+//          "country", "US",
+//          "status", "ACTIVE",
+//          "minAge", 21,
+//          "maxAge", 60
+//      )
+//  );
+//
+//
+//    for ( ReportGenerator generator: generators) {
+//    Report report = generator.generate(dataSource);
+//    System.out.println("Generated: " + report.getType());
+//    System.out.println("Generated at: " + report.getGeneratedAt());
+//    System.out.println("Size: " + report.getContent().length + " bytes");
+//  }
 //}
