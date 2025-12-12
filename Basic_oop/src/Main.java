@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Arrays;
 import oop.AbstractionProblems.ReportGenerationFramework.CsvReportGenerator;
 import oop.AbstractionProblems.ReportGenerationFramework.DataSource;
@@ -7,6 +8,12 @@ import oop.AbstractionProblems.ReportGenerationFramework.Report;
 import oop.AbstractionProblems.ReportGenerationFramework.ReportGenerator;
 import java.util.List;
 import java.util.Map;
+import oop.AbstractionProblems.SubscriptionManagementSystem.BasicPlan;
+import oop.AbstractionProblems.SubscriptionManagementSystem.Plan;
+import oop.AbstractionProblems.SubscriptionManagementSystem.StandardPlan;
+import oop.AbstractionProblems.SubscriptionManagementSystem.Tax;
+import oop.AbstractionProblems.SubscriptionManagementSystem.UaeTax;
+import oop.AbstractionProblems.SubscriptionManagementSystem.UsTax;
 import oop.Common.FoodDeliverySystem.BikeDelivery;
 import oop.Common.FoodDeliverySystem.CarDelivery;
 import oop.Common.FoodDeliverySystem.Delivery;
@@ -16,19 +23,23 @@ import oop.Common.FoodDeliverySystem.DroneDelivery;
 public class Main {
 
   public static void main(String[] args) {
+    Tax Us = new UsTax();
+    Plan plan = new StandardPlan(BigDecimal.valueOf(10), 2, 10, Us, 4);
 
-    List<Delivery> deliverys =List.of(
-        new BikeDelivery(25.25, 5, 5),
-        new CarDelivery(30, 10, 10),
-        new DroneDelivery(40, 20, 20),
-        new DroneDelivery(6, 20, 20));
-
-    for (Delivery delivery: deliverys) {
-      System.out.println(delivery.costCalculation());
-    }
+    System.out.println(plan.calculateBill());
 
   }
 }
+
+//List<Delivery> deliverys =List.of(
+//    new BikeDelivery(25.25, 5, 5),
+//    new CarDelivery(30, 10, 10),
+//    new DroneDelivery(40, 20, 20),
+//    new DroneDelivery(6, 20, 20));
+//
+//    for (Delivery delivery: deliverys) {
+//    System.out.println(delivery.costCalculation());
+//    }
 
 //    BankAccount bankAccount = new BankAccount(1, 100);
 //    bankAccount.deposit(50);
