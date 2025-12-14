@@ -1,44 +1,29 @@
 import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
 
-public class ValidPalindrome_17 {
+public class ValidAnagram_17 {
 
-  public boolean isPalindrome(String s) {
+  public boolean isAnagram(String s, String t) {
+    if (s.length() != t.length()) return false;
 
+    Map<Character, Integer> map = new HashMap<>();
+
+    for (char c : s.toCharArray()) {
+      map.put(c, map.getOrDefault(c, 0) + 1);
+    }
+
+    for (char c : t.toCharArray()) {
+      if (!map.containsKey(c)) return false;
+      map.put(c, map.get(c) - 1);
+      if (map.get(c) == 0) map.remove(c);
+    }
+
+    return map.isEmpty();
   }
 
   public static void main(String[] args) {
-    var solution = new ValidPalindrome_17();
-    System.out.println(solution.isPalindrome("a", "b"));
+    var solution = new ValidAnagram_17();
+    System.out.println(solution.isAnagram("ab", "ba"));
   }
 
-  //  optimized
-
-  /**
-   * public boolean canConstruct(String ransomNote, String magazine) {
-   *     if (ransomNote.length() > magazine.length()) {
-   *         return false;
-   *     }
-   *
-   *     Map<Character, Integer> count = new HashMap<>();
-   *
-   *     // Count ransom note
-   *     for (char c : ransomNote.toCharArray()) {
-   *         count.put(c, count.getOrDefault(c, 0) + 1);
-   *     }
-   *
-   *     // Consume magazine
-   *     for (char c : magazine.toCharArray()) {
-   *         if (count.containsKey(c)) {
-   *             count.put(c, count.get(c) - 1);
-   *             if (count.get(c) == 0) {
-   *                 count.remove(c);
-   *             }
-   *         }
-   *     }
-   *
-   *     return count.isEmpty();
-   * }
-   */
 }
