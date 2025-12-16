@@ -19,14 +19,28 @@ import oop.Common.FoodDeliverySystem.CarDelivery;
 import oop.Common.FoodDeliverySystem.Delivery;
 import oop.Common.FoodDeliverySystem.DeliveryDetails;
 import oop.Common.FoodDeliverySystem.DroneDelivery;
+import oop.Common.Notification.EmailNotification;
+import oop.Common.Notification.Notification;
+import oop.Common.Notification.PushNotification;
+import oop.Common.Notification.SMSNotification;
 
 public class Main {
 
   public static void main(String[] args) {
-    Tax Us = new UsTax();
-    Plan plan = new StandardPlan(BigDecimal.valueOf(10), 2, 10, Us, 4);
+//    Tax Us = new UsTax();
+//    Plan plan = new StandardPlan(BigDecimal.valueOf(10), 2, 10, Us, 4);
+//
+//    System.out.println(plan.calculateBill());
 
-    System.out.println(plan.calculateBill());
+    List<Notification> notifications = List.of(
+        new EmailNotification("user@email.com", "Hello!"),
+        new SMSNotification("+94771234567", "OTP 1234"),
+        new PushNotification("deviceId-8899", "New message received")
+    );
+
+    for (Notification n : notifications) {
+      n.send();
+    }
 
   }
 }
