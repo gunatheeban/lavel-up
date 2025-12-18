@@ -1,4 +1,4 @@
-package medium;
+package algorithms.TwoPointer.medium;
 
 import java.util.HashSet;
 import java.util.Set;
