@@ -1,4 +1,4 @@
-package SOLID;
+package SOLID.oc;
 
 public class Paypal implements PaymentType {
 
